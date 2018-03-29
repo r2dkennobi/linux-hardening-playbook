@@ -1,0 +1,18 @@
+---
+- name: Restrict dmesg output (syslog can contain sensative data)
+  sysctl:
+    name: kernel.dmesg_restrict
+    value: 1
+    state: present
+
+- name: Hide kernel pointers (Make it harder to find kernel write vulnerabilities)
+  sysctl:
+    name: kernel.kptr_restrict
+    value: 2
+    state: present
+
+- name: Disable unprivilege usage of user ns configuration (Reduce attack surface of local privilege escalation)
+  sysctl:
+    name: kernel.unprivileged_userns_clone
+    value: 0
+    state: present

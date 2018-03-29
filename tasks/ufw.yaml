@@ -1,0 +1,32 @@
+---
+- name: Set default incoming to deny
+  ufw:
+    direction: incoming
+    policy: deny
+
+- name: Set default outgoing to allow
+  ufw:
+    direction: outgoing
+    policy: allow
+
+- name: Set default routed to deny
+  ufw:
+    direction: routed
+    policy: deny
+
+- name: Let sender know when traffic is being denied
+  ufw:
+    rule: reject
+    port: auth
+    log: yes
+
+- name: Limit connection rate for SSH (effective for brute-force login attacks)
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Enable UFW with logging
+  ufw:
+    state: enabled
+    logging: on

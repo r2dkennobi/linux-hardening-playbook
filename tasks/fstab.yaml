@@ -1,0 +1,8 @@
+---
+- name: Configure shared memory
+  mount:
+    path: /run/shm
+    src: tmpfs
+    fstype: tmpfs
+    opts: defaults,noexec,nosuid
+    state: present

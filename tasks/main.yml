@@ -1,0 +1,10 @@
+---
+# tasks file for linux-hardening-playbook
+- name: sysctl configuration
+  include: sysctl.yaml
+- name: Lock down user accounts configuration
+  include: account_config.yaml
+- name: Configure fstab
+  include: fstab.yaml
+- name: Configure ufw
+  include: ufw.yaml
